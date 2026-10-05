@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">OnClick</string>
-    <string name="error_divide_zero">Nie dzielimy przez zero</string>
-    <string name="display_start">0</string>
+    <string name="guessTheNumber">Zgadnij liczbę od 1 do 100!</string>
+    <string name="guess">Zgadnij</string>
 </resources>
