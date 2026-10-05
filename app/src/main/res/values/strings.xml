@@ -2,4 +2,7 @@
     <string name="app_name">OnClick</string>
     <string name="guessTheNumber">Zgadnij liczbę od 1 do 100!</string>
     <string name="guess">Zgadnij</string>
+    <string name="give_up">Poddaję się</string>
+    <string name="restart">Od nowa</string>
+    <string name="empty_result"></string>
 </resources>
