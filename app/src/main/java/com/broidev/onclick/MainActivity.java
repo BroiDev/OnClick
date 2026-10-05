@@ -14,11 +14,11 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private int targetNumber; // stan gry: wylosowana liczba
     private EditText etGuess;
-    private TextView tvResult;
+    private TextView result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,34 +32,37 @@ public class MainActivity extends AppCompatActivity {
         });
 
         etGuess = findViewById(R.id.editTextNumberSigned);
-        tvResult = findViewById(R.id.result);
+        result = findViewById(R.id.result);
 
         // Losowanie pierwszej liczby przy starcie aplikacji
         startNewGame();
 
-        // 1. Sposób podpięcia zdarzenia: LAMBDA dla przycisku "Zgadnij"
-        findViewById(R.id.buttonGuess).setOnClickListener(v -> checkGuess());
+        // 1. Sposób podpięcia zdarzenia: AKTYWNOŚĆ JAKO LISTENER dla przycisku "Zgadnij"
+        findViewById(R.id.buttonGuess).setOnClickListener(this);
 
-        // 2. Sposób podpięcia zdarzenia: WSPÓLNY LISTENER z getId()
-        View.OnClickListener actionListener = v -> {
-            int id = v.getId();
-            if (id == R.id.buttonRestart) {
-                startNewGame();
-                Toast.makeText(this, R.string.toast_new_game, Toast.LENGTH_SHORT).show();
-            } else if (id == R.id.buttonGiveUp) {
-                tvResult.setText(getString(R.string.result_give_up, targetNumber));
-            }
-        };
-
-        findViewById(R.id.buttonRestart).setOnClickListener(actionListener);
-        findViewById(R.id.buttonGiveUp).setOnClickListener(actionListener);
+        // 3. Sposób podpięcia zdarzenia: LAMBDA dla przycisku "Poddaj się"
+        findViewById(R.id.buttonGiveUp).setOnClickListener(v -> result.setText(getString(R.string.result_give_up, targetNumber)));
     }
 
     private void startNewGame() {
         // Losuje liczbę od 1 do 100
         targetNumber = new Random().nextInt(100) + 1;
-        tvResult.setText("");
+        result.setText("");
         etGuess.setText("");
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        if (id == R.id.buttonGuess) {
+            checkGuess();
+        }
+    }
+
+    // 2. Sposób podpięcia zdarzenia: android:onClick w pliku XML dla przycisku "Od nowa"
+    public void onRestartClick(View view) {
+        startNewGame();
+        Toast.makeText(this, R.string.toast_new_game, Toast.LENGTH_SHORT).show();
     }
 
     private void checkGuess() {
@@ -76,11 +79,11 @@ public class MainActivity extends AppCompatActivity {
             
             // Logika gry
             if (guess > targetNumber) {
-                tvResult.setText(R.string.result_too_high);
+                result.setText(R.string.result_too_high);
             } else if (guess < targetNumber) {
-                tvResult.setText(R.string.result_too_low);
+                result.setText(R.string.result_too_low);
             } else {
-                tvResult.setText(getString(R.string.result_win, targetNumber));
+                result.setText(getString(R.string.result_win, targetNumber));
             }
         } catch (NumberFormatException e) {
             Toast.makeText(this, R.string.toast_invalid_input, Toast.LENGTH_SHORT).show();
