@@ -38,55 +38,20 @@ public class MainActivity extends AppCompatActivity {
         Button btn8 = findViewById(R.id.button8);
         Button btn9 = findViewById(R.id.button9);
 
-        btn0.setOnClickListener(v -> append0());
-        btn1.setOnClickListener(v -> append1());
-        btn2.setOnClickListener(v -> append2());
-        btn3.setOnClickListener(v -> append3());
-        btn4.setOnClickListener(v -> append4());
-        btn5.setOnClickListener(v -> append5());
-        btn6.setOnClickListener(v -> append6());
-        btn7.setOnClickListener(v -> append7());
-        btn8.setOnClickListener(v -> append8());
-        btn9.setOnClickListener(v -> append9());
+        btn0.setOnClickListener(v -> appendSymbol("0"));
+        btn1.setOnClickListener(v -> appendSymbol("1"));
+        btn2.setOnClickListener(v -> appendSymbol("2"));
+        btn3.setOnClickListener(v -> appendSymbol("3"));
+        btn4.setOnClickListener(v -> appendSymbol("4"));
+        btn5.setOnClickListener(v -> appendSymbol("5"));
+        btn5.setOnClickListener(v -> appendSymbol("6"));
+        btn7.setOnClickListener(v -> appendSymbol("7"));
+        btn8.setOnClickListener(v -> appendSymbol("8"));
+        btn9.setOnClickListener(v -> appendSymbol("9"));
     }
 
-    private void append0() {
-        tvDisplay.setText(tvDisplay.getText().toString() + "0");
+    private void appendSymbol(String symbol) {
+        tvDisplay.setText(tvDisplay.getText().toString() + symbol);
     }
 
-    private void append1() {
-        tvDisplay.setText(tvDisplay.getText().toString() + "1");
-    }
-
-    private void append2() {
-        tvDisplay.setText(tvDisplay.getText().toString() + "2");
-    }
-
-    private void append3() {
-        tvDisplay.setText(tvDisplay.getText().toString() + "3");
-    }
-
-    private void append4() {
-        tvDisplay.setText(tvDisplay.getText().toString() + "4");
-    }
-
-    private void append5() {
-        tvDisplay.setText(tvDisplay.getText().toString() + "5");
-    }
-
-    private void append6() {
-        tvDisplay.setText(tvDisplay.getText().toString() + "6");
-    }
-
-    private void append7() {
-        tvDisplay.setText(tvDisplay.getText().toString() + "7");
-    }
-
-    private void append8() {
-        tvDisplay.setText(tvDisplay.getText().toString() + "8");
-    }
-
-    private void append9() {
-        tvDisplay.setText(tvDisplay.getText().toString() + "9");
-    }
 }
