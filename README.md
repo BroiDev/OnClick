@@ -1,2 +1,7 @@
+# Zadanie 1 - Kalkulator
 Po etapie 1: w 10 miejscach: append0, append1, append2, append3, append4, append5, append6, append7, append8, append9.\
 Po etapie 3: w 1 miejscu: appendSymbol.
+
+# Zadanie 2 - Zgadywanka
+Zrzut ekranu działającej aplikacji:
+![Zrzut ekranu](C:\Users\user\Documents\Brojas\OnClick\Screenshot_20261005_122511.png)

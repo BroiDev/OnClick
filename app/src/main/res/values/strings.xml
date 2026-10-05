@@ -4,5 +4,11 @@
     <string name="guess">Zgadnij</string>
     <string name="give_up">Poddaję się</string>
     <string name="restart">Od nowa</string>
-    <string name="empty_result"></string>
+    <string name="toast_new_game">Rozpoczęto nową grę!</string>
+    <string name="toast_empty_input">Najpierw wpisz liczbę!</string>
+    <string name="toast_invalid_input">Niepoprawna liczba!</string>
+    <string name="result_too_high">Za dużo!</string>
+    <string name="result_too_low">Za mało!</string>
+    <string name="result_win">Gratulacje! To jest %1$d!</string>
+    <string name="result_give_up">Szkoda! Szukana liczba to: %1$d</string>
 </resources>

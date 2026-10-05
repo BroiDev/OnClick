@@ -1,7 +1,7 @@
 package com.broidev.onclick;
 
 import android.os.Bundle;
-import android.widget.Button;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,12 +39,26 @@ public class MainActivity extends AppCompatActivity {
 
         // 1. Sposób podpięcia zdarzenia: LAMBDA dla przycisku "Zgadnij"
         findViewById(R.id.buttonGuess).setOnClickListener(v -> checkGuess());
+
+        // 2. Sposób podpięcia zdarzenia: WSPÓLNY LISTENER z getId()
+        View.OnClickListener actionListener = v -> {
+            int id = v.getId();
+            if (id == R.id.buttonRestart) {
+                startNewGame();
+                Toast.makeText(this, R.string.toast_new_game, Toast.LENGTH_SHORT).show();
+            } else if (id == R.id.buttonGiveUp) {
+                tvResult.setText(getString(R.string.result_give_up, targetNumber));
+            }
+        };
+
+        findViewById(R.id.buttonRestart).setOnClickListener(actionListener);
+        findViewById(R.id.buttonGiveUp).setOnClickListener(actionListener);
     }
 
     private void startNewGame() {
         // Losuje liczbę od 1 do 100
         targetNumber = new Random().nextInt(100) + 1;
-        tvResult.setText(R.string.empty_result);
+        tvResult.setText("");
         etGuess.setText("");
     }
 
@@ -53,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         
         // Zabezpieczenie przed pustym polem
         if (input.isEmpty()) {
-            Toast.makeText(this, "Najpierw wpisz liczbę!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.toast_empty_input, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -62,14 +76,14 @@ public class MainActivity extends AppCompatActivity {
             
             // Logika gry
             if (guess > targetNumber) {
-                tvResult.setText("Za dużo!");
+                tvResult.setText(R.string.result_too_high);
             } else if (guess < targetNumber) {
-                tvResult.setText("Za mało!");
+                tvResult.setText(R.string.result_too_low);
             } else {
-                tvResult.setText("Gratulacje! To jest " + targetNumber + "!");
+                tvResult.setText(getString(R.string.result_win, targetNumber));
             }
         } catch (NumberFormatException e) {
-            Toast.makeText(this, "Niepoprawna liczba!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.toast_invalid_input, Toast.LENGTH_SHORT).show();
         }
     }
 }

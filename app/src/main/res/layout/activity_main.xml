@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:gravity="center"
-            android:text="@string/empty_result"
+            tools:text="Tutaj pojawi się wynik"
             android:textSize="18sp" />
 
         <LinearLayout
